@@ -73,6 +73,19 @@ class CellularAutomata:
             self.turtle.right(90)
         self.turtle.end_fill()
 
+        # remove artifacts
+
+        if True:
+            x_edge = self.grid_width * self.CELL_SIZE
+            artifact_dist = 1000
+            self.move_turtle(x_edge, 0)
+            self.turtle.fillcolor("white")
+            self.turtle.begin_fill()
+            self.move_turtle(x_edge + artifact_dist, 0)
+            self.move_turtle(x_edge + artifact_dist, artifact_dist)
+            self.move_turtle(x_edge, artifact_dist)
+            self.turtle.end_fill()
+
         t.update()
     
     def update(self):
