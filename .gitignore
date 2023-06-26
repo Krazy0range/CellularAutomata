@@ -1,0 +1,5 @@
+# ignore replit stuff
+replit.nix
+.replit
+.breakpoints
+venv/
