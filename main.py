@@ -81,9 +81,11 @@ class CellularAutomata:
 
         for x in range(self.grid_width):
             for y in range(self.grid_height):
+                
                 x_pos = x * self.CELL_SIZE
                 y_pos = y * self.CELL_SIZE
                 cell = self.get_cell(x, y)
+                
                 self.draw_cell(x_pos, y_pos, cell)
         
         t.update()
