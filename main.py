@@ -1,7 +1,8 @@
 import turtle as t
 from random import randint
 
-
+# Cellular Automata
+# Handles everything
 class CellularAutomata:
 
     def __init__(self, cell_size, grid_width, grid_height):
@@ -54,6 +55,7 @@ class CellularAutomata:
         y_pos = start_y - (y + padding)
         self.turtle.goto(x_pos, y_pos)
 
+    # Draw an individual cell on the grid
     def draw_cell(self, x, y, val):
         self.move_turtle(x, y)
         self.turtle.penup()
@@ -72,8 +74,8 @@ class CellularAutomata:
         self.turtle.end_fill()
 
         # remove artifacts
-
-        if True:
+        # does not need to be called every frame
+        if randint(0, 25) == 0:
             x_edge = self.grid_width * self.CELL_SIZE
             artifact_dist = 1000
             self.move_turtle(x_edge, 0)
@@ -85,13 +87,15 @@ class CellularAutomata:
             self.turtle.end_fill()
 
         t.update()
-    
+
+    # Update the cells
     def update(self):
         x_pos = randint(0, self.grid_width-1)
         y_pos = randint(0, self.grid_height-1)
         value = randint(0, 2)
         self.set_cell(x_pos, y_pos, value, True)
 
+    # Fully render the entire grid, not just cell by cell
     def full_render(self):
         self.turtle.clear()
 
@@ -107,7 +111,9 @@ class CellularAutomata:
         t.update()
 
 
-e = CellularAutomata(2, 100, 100)
+cell_size = 3
+grid_size = 100
+e = CellularAutomata(cell_size, grid_size, grid_size)
 
 while True:
     e.update()
