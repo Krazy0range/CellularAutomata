@@ -12,6 +12,7 @@ class CellularAutomata:
         # init turtle graphics
         self.turtle = t.Turtle()
         self.turtle.hideturtle()
+        self.turtle.penup()
         self.turtle.speed(0)
         t.tracer(0,0)
         
@@ -34,8 +35,10 @@ class CellularAutomata:
         print()
 
     # Set a specific cell's value
-    def set_cell(self, x, y, val):
+    def set_cell(self, x, y, val, draw):
         self.grid[y][x] = val
+        if draw:
+            self.draw_cell(x * self.CELL_SIZE, y * self.CELL_SIZE, val)
 
     # Fetch a specific cell's value
     def get_cell(self, x, y):
@@ -69,14 +72,16 @@ class CellularAutomata:
             self.turtle.forward(self.CELL_SIZE)
             self.turtle.right(90)
         self.turtle.end_fill()
+
+        t.update()
     
     def update(self):
         x_pos = randint(0, self.grid_width-1)
         y_pos = randint(0, self.grid_height-1)
         value = randint(0, 2)
-        self.set_cell(x_pos, y_pos, value)
+        self.set_cell(x_pos, y_pos, value, True)
 
-    def render(self):
+    def full_render(self):
         self.turtle.clear()
 
         for x in range(self.grid_width):
@@ -91,8 +96,7 @@ class CellularAutomata:
         t.update()
 
 
-e = CellularAutomata(10, 25, 25)
+e = CellularAutomata(2, 100, 100)
 
 while True:
     e.update()
-    e.render()
