@@ -1,8 +1,6 @@
 import turtle as t
 from random import randint
 
-# setup
-
 
 class CellularAutomata:
 
